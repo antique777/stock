@@ -11,6 +11,11 @@ import java.util.Set;
  * @author template
  */
 public class BeanValidators {
+
+    private BeanValidators() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static void validateWithException(Validator validator, Object object, Class<?>... groups)
             throws ConstraintViolationException {
         Set<ConstraintViolation<Object>> constraintViolations = validator.validate(object, groups);
