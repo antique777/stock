@@ -2,19 +2,19 @@ package com.xab.stock.config.security.handle;
 
 import com.alibaba.fastjson.JSON;
 import com.xab.stock.config.security.TokenService;
+import com.xab.stock.domain.AjaxResult;
 import com.xab.stock.domain.constant.Constants;
 import com.xab.stock.domain.constant.HttpStatus;
-import com.xab.stock.domain.AjaxResult;
 import com.xab.stock.domain.model.LoginUser;
 import com.xab.stock.manager.AsyncManager;
 import com.xab.stock.manager.factory.AsyncFactory;
 import com.xab.stock.utils.ServletUtils;
 import com.xab.stock.utils.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

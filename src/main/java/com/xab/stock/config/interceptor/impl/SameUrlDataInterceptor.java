@@ -8,10 +8,10 @@ import com.xab.stock.filter.RepeatedlyRequestWrapper;
 import com.xab.stock.utils.RedisCache;
 import com.xab.stock.utils.StringUtils;
 import com.xab.stock.utils.http.HttpHelper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;

@@ -3,7 +3,6 @@ package com.xab.stock.config.security;
 import com.xab.stock.config.security.filter.JwtAuthenticationTokenFilter;
 import com.xab.stock.config.security.handle.AuthenticationEntryPointImpl;
 import com.xab.stock.config.security.handle.LogoutSuccessHandlerImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,6 +16,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.web.filter.CorsFilter;
+
+import javax.annotation.Resource;
 
 /**
  * spring security配置

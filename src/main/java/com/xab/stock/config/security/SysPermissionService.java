@@ -3,9 +3,9 @@ package com.xab.stock.config.security;
 import com.xab.stock.domain.sys.SysUser;
 import com.xab.stock.service.ISysMenuService;
 import com.xab.stock.service.ISysRoleService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.HashSet;
 import java.util.Set;
 
