@@ -31,6 +31,9 @@ server:
       min-spare: 100
 
 spring:
+  messages:
+    # 国际化资源文件路径
+    basename: i18n/messages
   profiles:
     active: dev
 #    springboot 升级到 2.6.0之后，swagger版本和springboot出现了不兼容情况
