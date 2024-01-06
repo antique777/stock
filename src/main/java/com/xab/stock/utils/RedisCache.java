@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class RedisCache {
 
-    @Autowired
+    @Resource
     public RedisTemplate redisTemplate;
 
     /**

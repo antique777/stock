@@ -2,14 +2,13 @@ package com.xab.stock.controller.common;
 
 import com.xab.stock.config.ServerConfig;
 import com.xab.stock.config.StockConfig;
-import com.xab.stock.domain.constant.Constants;
 import com.xab.stock.domain.AjaxResult;
+import com.xab.stock.domain.constant.Constants;
 import com.xab.stock.utils.StringUtils;
 import com.xab.stock.utils.file.FileUploadUtils;
 import com.xab.stock.utils.file.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ import java.util.List;
 public class CommonController {
     private static final Logger log = LoggerFactory.getLogger(CommonController.class);
 
-    @Autowired
+    @Resource
     private ServerConfig serverConfig;
 
     private static final String FILE_DELIMETER = ",";
@@ -55,7 +55,7 @@ public class CommonController {
             response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
             FileUtils.setAttachmentResponseHeader(response, realFileName);
             FileUtils.writeBytes(filePath, response.getOutputStream());
-            if (delete) {
+            if (Boolean.TRUE.equals(delete)) {
                 FileUtils.deleteFile(filePath);
             }
         } catch (Exception e) {
@@ -67,7 +67,7 @@ public class CommonController {
      * 通用上传请求（单个）
      */
     @PostMapping("/upload")
-    public AjaxResult uploadFile(MultipartFile file) throws Exception {
+    public AjaxResult uploadFile(MultipartFile file) {
         try {
             // 上传文件路径
             String filePath = StockConfig.getUploadPath();
@@ -89,7 +89,7 @@ public class CommonController {
      * 通用上传请求（多个）
      */
     @PostMapping("/uploads")
-    public AjaxResult uploadFiles(List<MultipartFile> files) throws Exception {
+    public AjaxResult uploadFiles(List<MultipartFile> files) {
         try {
             // 上传文件路径
             String filePath = StockConfig.getUploadPath();
@@ -121,8 +121,7 @@ public class CommonController {
      * 本地资源通用下载
      */
     @GetMapping("/download/resource")
-    public void resourceDownload(String resource, HttpServletRequest request, HttpServletResponse response)
-            throws Exception {
+    public void resourceDownload(String resource, HttpServletRequest request, HttpServletResponse response) {
         try {
             if (!FileUtils.checkAllowDownload(resource)) {
                 throw new Exception(StringUtils.format("资源文件({})非法，不允许下载。 ", resource));

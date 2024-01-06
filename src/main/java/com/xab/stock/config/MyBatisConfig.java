@@ -32,6 +32,7 @@ import java.util.List;
  */
 @Configuration
 public class MyBatisConfig {
+
     @Autowired
     private Environment env;
 
@@ -60,7 +61,7 @@ public class MyBatisConfig {
                         }
                     }
                 }
-                if (result.size() > 0) {
+                if (!result.isEmpty()) {
                     HashSet<String> hashResult = new HashSet<String>(result);
                     allResult.addAll(hashResult);
                 }
@@ -89,7 +90,7 @@ public class MyBatisConfig {
                 }
             }
         }
-        return resources.toArray(new Resource[resources.size()]);
+        return resources.toArray(new Resource[0]);
     }
 
     @Bean
@@ -97,6 +98,7 @@ public class MyBatisConfig {
         String typeAliasesPackage = env.getProperty("mybatis.typeAliasesPackage");
         String mapperLocations = env.getProperty("mybatis.mapperLocations");
         String configLocation = env.getProperty("mybatis.configLocation");
+        assert typeAliasesPackage != null;
         typeAliasesPackage = setTypeAliasesPackage(typeAliasesPackage);
         VFS.addImplClass(SpringBootVFS.class);
 

@@ -13,10 +13,10 @@ import com.xab.stock.utils.StringUtils;
 import com.xab.stock.utils.text.Convert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import java.util.Collection;
 import java.util.List;
 
@@ -30,10 +30,10 @@ public class SysConfigServiceImpl implements ISysConfigService {
 
     private static final Logger log = LoggerFactory.getLogger(SysConfigServiceImpl.class);
 
-    @Autowired
+    @Resource
     private SysConfigMapper configMapper;
 
-    @Autowired
+    @Resource
     private RedisCache redisCache;
 
     /**
@@ -88,7 +88,7 @@ public class SysConfigServiceImpl implements ISysConfigService {
     @Override
     public boolean selectCaptchaOnOff() {
         String captchaOnOff = selectConfigByKey("sys.account.captchaEnabled");
-        log.debug("验证码开启状态:" + captchaOnOff);
+        log.debug("验证码开启状态: {}", captchaOnOff);
         if (StringUtils.isEmpty(captchaOnOff)) {
             return true;
         }

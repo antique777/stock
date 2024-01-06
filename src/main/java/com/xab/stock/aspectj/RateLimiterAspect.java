@@ -36,12 +36,12 @@ public class RateLimiterAspect {
 
     private RedisScript<Long> limitScript;
 
-    @Autowired
+    @Resource
     public void setRedisTemplate1(RedisTemplate<Object, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
 
-    @Autowired
+    @Resource
     public void setLimitScript(RedisScript<Long> limitScript) {
         this.limitScript = limitScript;
     }

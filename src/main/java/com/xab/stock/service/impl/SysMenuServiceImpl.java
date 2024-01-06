@@ -14,9 +14,9 @@ import com.xab.stock.mapper.system.SysRoleMenuMapper;
 import com.xab.stock.service.ISysMenuService;
 import com.xab.stock.utils.SecurityUtils;
 import com.xab.stock.utils.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -29,13 +29,13 @@ import java.util.stream.Collectors;
 public class SysMenuServiceImpl implements ISysMenuService {
     public static final String PREMISSION_STRING = "perms[\"{0}\"]";
 
-    @Autowired
+    @Resource
     private SysMenuMapper menuMapper;
 
-    @Autowired
+    @Resource
     private SysRoleMapper roleMapper;
 
-    @Autowired
+    @Resource
     private SysRoleMenuMapper roleMenuMapper;
 
     /**

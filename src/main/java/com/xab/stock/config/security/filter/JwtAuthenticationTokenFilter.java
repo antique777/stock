@@ -24,7 +24,7 @@ import java.io.IOException;
  */
 @Component
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
-    @Autowired
+    @Resource
     private TokenService tokenService;
 
     @Override

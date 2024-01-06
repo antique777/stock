@@ -3,9 +3,9 @@ package com.xab.stock.service.impl;
 import com.xab.stock.domain.sys.SysLogininfor;
 import com.xab.stock.mapper.system.SysLogininforMapper;
 import com.xab.stock.service.ISysLogininforService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -16,7 +16,7 @@ import java.util.List;
 @Service
 public class SysLogininforServiceImpl implements ISysLogininforService {
 
-    @Autowired
+    @Resource
     private SysLogininforMapper logininforMapper;
 
     /**

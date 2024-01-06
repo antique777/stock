@@ -2,13 +2,12 @@ package com.xab.stock.controller.common;
 
 import com.google.code.kaptcha.Producer;
 import com.xab.stock.config.StockConfig;
-import com.xab.stock.domain.constant.Constants;
 import com.xab.stock.domain.AjaxResult;
+import com.xab.stock.domain.constant.Constants;
 import com.xab.stock.service.ISysConfigService;
 import com.xab.stock.utils.RedisCache;
 import com.xab.stock.utils.sign.Base64;
 import com.xab.stock.utils.uuid.IdUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.FastByteArrayOutputStream;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,10 +33,10 @@ public class CaptchaController {
     @Resource(name = "captchaProducerMath")
     private Producer captchaProducerMath;
 
-    @Autowired
+    @Resource
     private RedisCache redisCache;
 
-    @Autowired
+    @Resource
     private ISysConfigService configService;
 
     /**

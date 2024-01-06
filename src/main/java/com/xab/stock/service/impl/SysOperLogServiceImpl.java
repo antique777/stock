@@ -3,9 +3,9 @@ package com.xab.stock.service.impl;
 import com.xab.stock.domain.sys.SysOperLog;
 import com.xab.stock.mapper.system.SysOperLogMapper;
 import com.xab.stock.service.ISysOperLogService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -15,7 +15,7 @@ import java.util.List;
  */
 @Service
 public class SysOperLogServiceImpl implements ISysOperLogService {
-    @Autowired
+    @Resource
     private SysOperLogMapper operLogMapper;
 
     /**

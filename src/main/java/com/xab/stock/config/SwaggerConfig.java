@@ -2,7 +2,6 @@ package com.xab.stock.config;
 
 import io.swagger.annotations.ApiOperation;
 import io.swagger.models.auth.In;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +13,7 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +27,7 @@ public class SwaggerConfig {
     /**
      * 系统基础配置
      */
-    @Autowired
+    @Resource
     private StockConfig stockConfig;
 
     /**

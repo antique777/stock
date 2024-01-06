@@ -16,10 +16,10 @@ import java.util.Set;
  */
 @Component
 public class SysPermissionService {
-    @Autowired
+    @Resource
     private ISysRoleService roleService;
 
-    @Autowired
+    @Resource
     private ISysMenuService menuService;
 
     /**

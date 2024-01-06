@@ -13,11 +13,11 @@ import com.xab.stock.utils.StringUtils;
 import com.xab.stock.utils.bean.BeanValidators;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
+import javax.annotation.Resource;
 import javax.validation.Validator;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,25 +32,25 @@ import java.util.stream.Collectors;
 public class SysUserServiceImpl implements ISysUserService {
     private static final Logger log = LoggerFactory.getLogger(SysUserServiceImpl.class);
 
-    @Autowired
+    @Resource
     private SysUserMapper userMapper;
 
-    @Autowired
+    @Resource
     private SysRoleMapper roleMapper;
 
-    @Autowired
+    @Resource
     private SysPostMapper postMapper;
 
-    @Autowired
+    @Resource
     private SysUserRoleMapper userRoleMapper;
 
-    @Autowired
+    @Resource
     private SysUserPostMapper userPostMapper;
 
-    @Autowired
+    @Resource
     private ISysConfigService configService;
 
-    @Autowired
+    @Resource
     protected Validator validator;
 
     /**
@@ -160,7 +160,7 @@ public class SysUserServiceImpl implements ISysUserService {
      * 校验手机号码是否唯一
      *
      * @param user 用户信息
-     * @return
+     * @return String
      */
     @Override
     public String checkPhoneUnique(SysUser user) {
@@ -176,7 +176,7 @@ public class SysUserServiceImpl implements ISysUserService {
      * 校验email是否唯一
      *
      * @param user 用户信息
-     * @return
+     * @return String
      */
     @Override
     public String checkEmailUnique(SysUser user) {
@@ -353,7 +353,7 @@ public class SysUserServiceImpl implements ISysUserService {
                 ur.setRoleId(roleId);
                 list.add(ur);
             }
-            if (list.size() > 0) {
+            if (!list.isEmpty()) {
                 userRoleMapper.batchUserRole(list);
             }
         }
@@ -375,7 +375,7 @@ public class SysUserServiceImpl implements ISysUserService {
                 up.setPostId(postId);
                 list.add(up);
             }
-            if (list.size() > 0) {
+            if (!list.isEmpty()) {
                 userPostMapper.batchUserPost(list);
             }
         }
@@ -397,7 +397,7 @@ public class SysUserServiceImpl implements ISysUserService {
                 ur.setRoleId(roleId);
                 list.add(ur);
             }
-            if (list.size() > 0) {
+            if (!list.isEmpty()) {
                 userRoleMapper.batchUserRole(list);
             }
         }
@@ -449,7 +449,7 @@ public class SysUserServiceImpl implements ISysUserService {
      */
     @Override
     public String importUser(List<SysUser> userList, Boolean isUpdateSupport, String operName) {
-        if (StringUtils.isNull(userList) || userList.size() == 0) {
+        if (StringUtils.isNull(userList) || userList.isEmpty()) {
             throw new ServiceException("导入用户数据不能为空！");
         }
         int successNum = 0;
